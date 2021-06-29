@@ -146,6 +146,10 @@ public class Snake {
                 int height = moveRequest.get("board").get("height").asInt();
 
             */
+            String gameId = moveRequest.get("game").get("id").asText();
+            int height = moveRequest.get("board").get("height").asInt();
+            JsonNode food = moveRequest.get("board").get("food").get(1);
+
 
             String[] possibleMoves = { "up", "down", "left", "right" };
 
@@ -154,8 +158,11 @@ public class Snake {
             String move = possibleMoves[choice];
 
             LOG.info("MOVE {}", move);
-            LOG.info("salut tu bouge en MOVE{}", move);
-            LOG.info(moveRequest.get("board").get("height"));
+            //LOG.info("salut tu bouge en MOVE{}", move);
+            LOG.info("gameId {}", gameId);
+            LOG.info("height {}", height);
+            LOG.info("choice {}", choice);
+            LOG.info("food {}", food);
 
             Map<String, String> response = new HashMap<>();
             response.put("move", move);
@@ -180,4 +187,6 @@ public class Snake {
         }
     }
 
+    
 }
+
